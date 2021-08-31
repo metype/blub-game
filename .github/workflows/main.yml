@@ -18,6 +18,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Game Build
-          path: |
-          target/*.jar
-          levels/
+          path: target/*.jar
+      - name: Archive level data
+        uses: actions/upload-artifact@v2
+        with:
+          name: Game Build
+          path: levels/**
