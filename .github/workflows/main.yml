@@ -20,4 +20,4 @@ jobs:
           name: Game Build
           path: |
           target/*.jar
-          levels
+          levels/
