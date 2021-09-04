@@ -6,7 +6,7 @@
 
     <groupId>com.metype.game</groupId>
     <artifactId>AdventuresOfBlub</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
