@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="dyn4j" type="repository">
+    <properties maven-id="org.dyn4j:dyn4j:4.2.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/dyn4j/dyn4j/4.2.0/dyn4j-4.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

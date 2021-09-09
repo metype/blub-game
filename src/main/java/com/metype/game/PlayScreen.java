@@ -14,6 +14,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import org.dyn4j.dynamics.Body;
+import org.dyn4j.geometry.Geometry;
+import org.dyn4j.world.World;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -47,11 +50,13 @@ public class PlayScreen {
     ArrayList<LevelParser> pack = new ArrayList<LevelParser>();
     int packIndex = 0;
     Image tileSet;
+    World<Body> world = new World<Body>();
 
 
     public PlayScreen() {
+        world.addBody(player.body);
         try {
-            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + "\\assets\\gray_terr.png"));
+            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + "/assets/gray_terr.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -73,6 +78,8 @@ public class PlayScreen {
             try {
                 mainCanvas.setWidth(rootPane.getWidth());
                 mainCanvas.setHeight(rootPane.getHeight());
+                player.body.removeAllFixtures();
+                player.body.addFixture(Geometry.createRectangle(mainCanvas.getHeight()/11f,mainCanvas.getHeight()/11f));
             }catch(Exception ignored){};
         };
         rootPane.heightProperty().addListener(stageSizeListener);
@@ -236,6 +243,8 @@ public class PlayScreen {
         l = new Level(5,2);
         gc.setFont(Font.font("Cambay", FontWeight.BOLD, FontPosture.ITALIC, 25));
         frameTime = System.nanoTime();
+        player.body.removeAllFixtures();
+        player.body.addFixture(Geometry.createRectangle(mainCanvas.getHeight()/11f,mainCanvas.getHeight()/11f));
         new AnimationTimer()
         {
             public void handle(long currentNanoTime)

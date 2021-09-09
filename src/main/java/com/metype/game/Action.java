@@ -18,22 +18,20 @@ public class Action {
     }
 
     public Level undo(Level victim) {
-        Level recreated = victim.copy();
         for(int i=(int)position.x;i<position.x+old.length;i++){
             for(int j=(int)position.y;j<position.y+old[i-(int)position.x].length;j++){
-                recreated.t[i][j] = old[i-(int)position.x][j-(int)position.y].copy();
+                victim.t[i][j] = old[i-(int)position.x][j-(int)position.y].copy();
             }
         }
-        return recreated;
+        return victim;
     }
 
     public Level redo(Level victim) {
-        Level recreated = victim.copy();
         for(int i=(int)position.x;i<position.x+change.length;i++){
             for(int j=(int)position.y;j<position.y+change[i-(int)position.x].length;j++){
-                recreated.t[i][j] = change[i-(int)position.x][j-(int)position.y].copy();
+                victim.t[i][j] = change[i-(int)position.x][j-(int)position.y].copy();
             }
         }
-        return recreated;
+        return victim;
     }
 }

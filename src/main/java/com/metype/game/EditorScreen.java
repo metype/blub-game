@@ -74,7 +74,7 @@ public class EditorScreen {
 
     public EditorScreen() {
         try {
-            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + "\\assets\\gray_terr.png"));
+            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + "/assets/gray_terr.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -131,7 +131,7 @@ public class EditorScreen {
                 verticalSlider.showTickLabelsProperty().set(true);
                 verticalSlider.setMax(15);
                 verticalSlider.setMin(1);
-                verticalSlider.valueProperty().addListener(new ChangeListener<Number>() {
+                verticalSlider.valueProperty().addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                         newHeight[0] = t1.doubleValue();
@@ -842,12 +842,22 @@ public class EditorScreen {
                                                     return;
                                                 }
                                             }
+                                            Action a = new Action(new Vector(MX, MY));
+                                            Tile[][] old = new Tile[1][1];
+                                            old[0][0] = l.t[MX][MY].copy();
+                                            a.setOld(old);
                                             Vector[] tempInputs = l.t[MX][MY].inputs.clone();
                                             l.t[MX][MY].inputs = new Vector[tempInputs.length + 1];
                                             System.arraycopy(tempInputs, 0, l.t[MX][MY].inputs, 0, tempInputs.length);
                                             l.t[MX][MY].inputs[l.t[MX][MY].inputs.length - 1] = newInput;
-                                            for (Vector v : l.t[MX][MY].inputs) {
-                                            }
+                                            Tile[][] change = new Tile[1][1];
+                                            change[0][0] = l.t[MX][MY].copy();
+                                            a.setNew(change);
+                                            ArrayList<Action> toRemove = new ArrayList<Action>();
+                                            for (int i = actionIndex + 1; i < actions.size(); i++) toRemove.add(actions.get(i));
+                                            actions.removeAll(toRemove);
+                                            actions.add(a);
+                                            actionIndex = actions.size() - 1;
                                         }
                                         tileOneForWire = null;
                                     }
