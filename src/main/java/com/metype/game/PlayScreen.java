@@ -243,8 +243,8 @@ public class PlayScreen {
         l = new Level(5,2);
         gc.setFont(Font.font("Cambay", FontWeight.BOLD, FontPosture.ITALIC, 25));
         frameTime = System.nanoTime();
-        player.body.removeAllFixtures();
-        player.body.addFixture(Geometry.createRectangle(mainCanvas.getHeight()/11f,mainCanvas.getHeight()/11f));
+//        player.body.removeAllFixtures();
+//        player.body.addFixture(Geometry.createRectangle(mainCanvas.getHeight()/11f,mainCanvas.getHeight()/11f));
         new AnimationTimer()
         {
             public void handle(long currentNanoTime)
