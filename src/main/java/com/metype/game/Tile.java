@@ -8,9 +8,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
-import org.dyn4j.dynamics.Body;
-import org.dyn4j.geometry.Geometry;
-import org.dyn4j.geometry.MassType;
 
 public class Tile {
     public int id = 0;
@@ -25,22 +22,17 @@ public class Tile {
     Color lightIntensity = Color.color(0,0,0.01);
     public Color tint = Color.hsb(120, .57, 1, 0.35);
     public int alignment = 1;
-//    PVector exact = new PVector(0, 0);
+    //    PVector exact = new PVector(0, 0);
     boolean state = false;
     public Vector[] inputs = new Vector[0];
     boolean leftShaft = false;
     boolean rightShaft = false;
-    Body body;
 
     public Tile(int id) {
         this.id=id;
         if(id == 3){
             lightIntensity=Color.rgb(255,0,0);
         }
-        body = new Body();
-        body.addFixture(Geometry.createCircle(1.0));
-        body.translate(1.0, 0.0);
-        body.setMass(MassType.NORMAL);
     }
 
     public void setHitBox(Rect r) {

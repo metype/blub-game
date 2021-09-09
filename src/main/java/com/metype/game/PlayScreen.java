@@ -50,11 +50,11 @@ public class PlayScreen {
     ArrayList<LevelParser> pack = new ArrayList<LevelParser>();
     int packIndex = 0;
     Image tileSet;
-    World<Body> world = new World<Body>();
+//    World<Body> world = new World<Body>();
 
 
     public PlayScreen() {
-        world.addBody(player.body);
+//        world.addBody(player.body);
         try {
             tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + "/assets/gray_terr.png"));
         } catch (FileNotFoundException e) {
@@ -78,8 +78,8 @@ public class PlayScreen {
             try {
                 mainCanvas.setWidth(rootPane.getWidth());
                 mainCanvas.setHeight(rootPane.getHeight());
-                player.body.removeAllFixtures();
-                player.body.addFixture(Geometry.createRectangle(mainCanvas.getHeight()/11f,mainCanvas.getHeight()/11f));
+//                player.body.removeAllFixtures();
+//                player.body.addFixture(Geometry.createRectangle(mainCanvas.getHeight()/11f,mainCanvas.getHeight()/11f));
             }catch(Exception ignored){};
         };
         rootPane.heightProperty().addListener(stageSizeListener);
