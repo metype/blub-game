@@ -174,7 +174,7 @@ public class EditorScreen {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FileChooser fileChooser = new FileChooser();
-                File levelDirectory = new File(System.getProperty("user.dir") + "\\levels\\");
+                File levelDirectory = new File(System.getProperty("user.dir") + "/levels/");
                 fileChooser.setInitialDirectory(levelDirectory);
                 fileChooser.setTitle("Open Level File");
                 fileChooser.getExtensionFilters().addAll(
@@ -191,7 +191,7 @@ public class EditorScreen {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FileChooser fileChooser = new FileChooser();
-                File levelDirectory = new File(System.getProperty("user.dir") + "\\levels\\");
+                File levelDirectory = new File(System.getProperty("user.dir") + "/levels/");
                 fileChooser.setInitialDirectory(levelDirectory);
                 fileChooser.setTitle("Save Level File");
                 fileChooser.getExtensionFilters().addAll(
