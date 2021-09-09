@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  buildwin:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,15 +17,41 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: Game Build
+          name: Game Build - Windows
           path: target/*.jar
       - name: Archive level data
         uses: actions/upload-artifact@v2
         with:
-          name: Game Build
+          name: Game Build - Windows
           path: actions/levels/**
       - name: Archive assets
         uses: actions/upload-artifact@v2
         with:
-          name: Game Build
+          name: Game Build - Windows
+          path: actions/assets/**
+  buildlinux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 16
+        uses: actions/setup-java@v2
+        with:
+          java-version: '16'
+          distribution: 'adopt'
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Game Build - Linux
+          path: target/*.jar
+      - name: Archive level data
+        uses: actions/upload-artifact@v2
+        with:
+          name: Game Build - Linux
+          path: actions/levels/**
+      - name: Archive assets
+        uses: actions/upload-artifact@v2
+        with:
+          name: Game Build - Linux
           path: actions/assets/**
