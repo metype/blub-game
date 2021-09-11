@@ -56,7 +56,7 @@ public class PlayScreen {
     public PlayScreen() {
 //        world.addBody(player.body);
         try {
-            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + "/assets/gray_terr.png"));
+            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + File.separator + "assets" + File.separator + "gray_terr.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
