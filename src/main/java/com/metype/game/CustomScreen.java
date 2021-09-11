@@ -35,7 +35,7 @@ public class CustomScreen {
         ListView<ToggleButton> lv = (ListView<ToggleButton>)((GridPane)(rootPane.getChildren().get(0))).getChildren().get(2);
         ToggleGroup tg = new ToggleGroup();
         ObservableList<ToggleButton> itemList = lv.getItems();
-        File levelDirectory = new File(System.getProperty("user.dir") + "/levels/");
+        File levelDirectory = new File(System.getProperty("user.dir") + File.separator + "levels" + File.separator);
         if(levelDirectory.list().length==0) {
             try {
                 rootPane = new FXMLLoader(HelloApplication.class.getResource("workingCustomNothingScreen.fxml")).load();
