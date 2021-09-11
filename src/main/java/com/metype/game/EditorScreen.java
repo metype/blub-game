@@ -74,7 +74,7 @@ public class EditorScreen {
 
     public EditorScreen() {
         try {
-            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + "/assets/gray_terr.png"));
+            tileSet = new Image(new FileInputStream(System.getProperty("user.dir") + File.separator + "assets"+ File.separator + "gray_terr.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -174,7 +174,7 @@ public class EditorScreen {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FileChooser fileChooser = new FileChooser();
-                File levelDirectory = new File(System.getProperty("user.dir") + "/levels/");
+                File levelDirectory = new File(System.getProperty("user.dir") + File.separator + "levels" + File.separator);
                 fileChooser.setInitialDirectory(levelDirectory);
                 fileChooser.setTitle("Open Level File");
                 fileChooser.getExtensionFilters().addAll(
@@ -191,7 +191,7 @@ public class EditorScreen {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FileChooser fileChooser = new FileChooser();
-                File levelDirectory = new File(System.getProperty("user.dir") + "/levels/");
+                File levelDirectory = new File(System.getProperty("user.dir") + File.separator + "levels" + File.separator);
                 fileChooser.setInitialDirectory(levelDirectory);
                 fileChooser.setTitle("Save Level File");
                 fileChooser.getExtensionFilters().addAll(
