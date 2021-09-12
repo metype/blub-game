@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.metype.game</groupId>
   <artifactId>AdventuresOfBlub</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <build>
     <plugins>
       <plugin>
@@ -56,5 +56,6 @@
   <properties>
     <maven.compiler.target>16</maven.compiler.target>
     <maven.compiler.source>16</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>

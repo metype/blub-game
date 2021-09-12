@@ -2,9 +2,12 @@ package com.metype.game;
 
 public class Index {
 
+    private Index() {
+        throw new UnsupportedOperationException("Cannot instantiate utility class.");
+    }
+
     // Linear-search function to find the index of an element
-    public static int findIndex(Object arr[], Object t)
-    {
+    public static int findIndex(Object[] arr, Object t) {
 
         // if array is Null
         if (arr == null) {
@@ -29,8 +32,7 @@ public class Index {
         return -1;
     }
 
-    public static int findIndex(int arr[], int t)
-    {
+    public static int findIndex(int[] arr, int t) {
 
         // if array is Null
         if (arr == null) {

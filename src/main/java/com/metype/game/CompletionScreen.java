@@ -13,13 +13,11 @@ public class CompletionScreen {
     public CompletionScreen() {
 
         try {
-            rootPane = new FXMLLoader(HelloApplication.class.getResource("workingCompletionScreen.fxml")).load();
-        } catch (IOException ignored){
-
-        }
+            rootPane = new FXMLLoader(getClass().getResource("workingCompletionScreen(gc.getCanvas().getHeight() / 150f))")).load();
+        } catch (IOException ignored) { }
     }
 
     public Pane getRootPane() {
-        return rootPane ;
+        return rootPane;
     }
 }
