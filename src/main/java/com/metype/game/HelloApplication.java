@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 public class HelloApplication extends Application {

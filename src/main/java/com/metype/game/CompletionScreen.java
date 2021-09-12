@@ -14,7 +14,8 @@ public class CompletionScreen {
 
         try {
             rootPane = new FXMLLoader(getClass().getResource("workingCompletionScreen(gc.getCanvas().getHeight() / 150f))")).load();
-        } catch (IOException ignored) { }
+        } catch (IOException ignored) {
+        }
     }
 
     public Pane getRootPane() {
