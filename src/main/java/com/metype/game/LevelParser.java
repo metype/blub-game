@@ -1,8 +1,10 @@
 package com.metype.game;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -15,9 +17,9 @@ public class LevelParser {
     File file;
 
     public LevelParser(File levelFile) throws IllegalArgumentException, IOException {
-        if(!levelFile.exists()) throw new IllegalArgumentException("File provided must exist.");
-        if(!levelFile.isFile()) throw new IllegalArgumentException("File provided must not be a directory.");
-        if(!levelFile.canRead()) throw new IllegalArgumentException("File provided cannot be read.");
+        if (!levelFile.exists()) throw new IllegalArgumentException("File provided must exist.");
+        if (!levelFile.isFile()) throw new IllegalArgumentException("File provided must not be a directory.");
+        if (!levelFile.canRead()) throw new IllegalArgumentException("File provided cannot be read.");
         BufferedReader br = new BufferedReader(new FileReader(levelFile));
         levelName = levelFile.getName().split("\\.lev")[0];
         file = levelFile;
@@ -26,14 +28,14 @@ public class LevelParser {
             if (s.split("(?!\\B\"[^\"]*)=(?![^\"]*\"\\B)").length < 2) continue;
             String attrib = s.split("(?!\\B\"[^\"]*)=(?![^\"]*\"\\B)")[0];
             String value = s.split("(?!\\B\"[^\"]*)=(?![^\"]*\"\\B)")[1];
-            if(value.startsWith("\"") && value.endsWith("\"")){
+            if (value.startsWith("\"") && value.endsWith("\"")) {
                 Pattern pattern = Pattern.compile("(?<=\")(.)*(?=\")");
                 Matcher matcher = pattern.matcher(value);
                 if (matcher.find()) {
                     prop.put(attrib, matcher.group(0));
                 }
             }
-            if(value.startsWith("[") && value.endsWith("]") && !attrib.equalsIgnoreCase("levelData")){
+            if (value.startsWith("[") && value.endsWith("]") && !attrib.equalsIgnoreCase("levelData")) {
                 Pattern pattern = Pattern.compile("\\[.*\\]");
                 Matcher matcher = pattern.matcher(value);
                 if (matcher.find()) {
@@ -44,9 +46,9 @@ public class LevelParser {
     }
 
     public void loadLevel(File levelFile) throws IOException {
-        if(!levelFile.exists()) throw new IllegalArgumentException("File provided must exist.");
-        if(!levelFile.isFile()) throw new IllegalArgumentException("File provided must not be a directory.");
-        if(!levelFile.canRead()) throw new IllegalArgumentException("File provided cannot be read.");
+        if (!levelFile.exists()) throw new IllegalArgumentException("File provided must exist.");
+        if (!levelFile.isFile()) throw new IllegalArgumentException("File provided must not be a directory.");
+        if (!levelFile.canRead()) throw new IllegalArgumentException("File provided cannot be read.");
         BufferedReader br = new BufferedReader(new FileReader(levelFile));
         levelName = levelFile.getName().split("\\.lev")[0];
         file = levelFile;
@@ -55,7 +57,7 @@ public class LevelParser {
             if (s.split("(?!\\B\"[^\"]*)=(?![^\"]*\"\\B)").length < 2) continue;
             String attrib = s.split("(?!\\B\"[^\"]*)=(?![^\"]*\"\\B)")[0];
             String value = s.split("(?!\\B\"[^\"]*)=(?![^\"]*\"\\B)")[1];
-            if(attrib.equals("levelData")) {
+            if (attrib.equals("levelData")) {
                 Pattern pattern = Pattern.compile("\\[.*]");
                 Matcher matcher = pattern.matcher(value);
                 if (matcher.find()) {
@@ -77,9 +79,9 @@ public class LevelParser {
                                         }
                                         if (Vector[].class.equals(modified.getType())) {
                                             String[] entries = metaData.split(":")[1].split(" ");
-                                            Vector[] newArr = new Vector[entries.length/2];
-                                            for(int k=0;k<entries.length;k+=2){
-                                                newArr[k/2] = new Vector(Double.parseDouble(entries[k]),Double.parseDouble(entries[k+1]));
+                                            Vector[] newArr = new Vector[entries.length / 2];
+                                            for (int k = 0; k < entries.length; k += 2) {
+                                                newArr[k / 2] = new Vector(Double.parseDouble(entries[k]), Double.parseDouble(entries[k + 1]));
                                             }
                                             modified.set(tile, newArr);
                                         }
@@ -101,11 +103,15 @@ public class LevelParser {
         }
     }
 
-    public Object get(String key){
+    public Object get(String key) {
         return prop.get(key);
     }
 
-    public String levelName(){ return this.levelName; }
+    public String levelName() {
+        return this.levelName;
+    }
 
-    public File file() { return this.file; }
+    public File file() {
+        return this.file;
+    }
 }

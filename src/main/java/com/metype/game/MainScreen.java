@@ -13,13 +13,12 @@ public class MainScreen {
     public MainScreen() {
 
         try {
-            rootPane = new FXMLLoader(HelloApplication.class.getResource("workingTitleScreen.fxml")).load();
-        } catch (IOException ignored){
-
+            rootPane = new FXMLLoader(getClass().getResource("workingTitleScreen.fxml")).load();
+        } catch (IOException ignored) {
         }
     }
 
     public Pane getRootPane() {
-        return rootPane ;
+        return rootPane;
     }
 }

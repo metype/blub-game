@@ -3,3 +3,12 @@
 *.bat
 /levels
 /assets
+.idea/blub-game.iml
+.idea/modules.xml
+.idea/sonarlint/issuestore/index.pb
+.idea/blub-game.iml
+*.iml
+*.iml
+.idea/intellij-javadocs-4.0.1.xml
+.idea/misc.xml
+.idea/misc.xml
